@@ -7,10 +7,20 @@
 
 ### windows配置
 
- * mingw
+ * ### with MinGW
 
- ```shell
- 
- ```
+   下载 `mingw-w64` (http://mingw-w64.org) 并添加 `.../mingw/bin` 到环境变量中
 
- * VS
+   下载 `git`
+   
+   下载 `cmake` (https://cmake.org)
+
+   执行接下来的指令：
+
+   ```shell
+   git clone --recursive https://github.com/SaltyfishAlpha/GraphLab.git
+   mkdir build
+   cd build 
+   cmake -G "MinGW Makefiles" ..
+   mingw32-make -j4
+   ```
