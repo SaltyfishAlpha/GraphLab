@@ -19,8 +19,4 @@
 
    ```shell
    git clone --recursive https://github.com/SaltyfishAlpha/GraphLab.git
-   mkdir build
-   cd build 
-   cmake -G "MinGW Makefiles" ..
-   mingw32-make -j4
    ```
