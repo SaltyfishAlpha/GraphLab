@@ -1,15 +1,15 @@
-cmake_minimum_required(VERSION 3.23)
-
 set(TARGET_NAME GraphLabRuntime)
 
 set(CMAKE_CXX_STANDARD 17)
 
-file(GLOB src_files
-        "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp"
-        "${CMAKE_CURRENT_SOURCE_DIR}/*.c"
-        "${CMAKE_CURRENT_SOURCE_DIR}/component/*.h")
+file(GLOB_RECURSE HEADER_FILES "*.h")
+file(GLOB_RECURSE SOURCE_FILES "*.cpp")
 
-add_executable(${TARGET_NAME} ${src_files})
+source_group(TREE "${CMAKE_CURRENT_SOURCE_DIR}" FILES ${HEADER_FILES} ${SOURCE_FILES})
+
+add_library(${TARGET_NAME} ${HEADER_FILES} ${SOURCE_FILES})
+
+set_target_properties(${TARGET_NAME} PROPERTIES CXX_STANDARD 17)
 
 # Link dependencies
 target_link_libraries(${TARGET_NAME} PUBLIC assimp)
