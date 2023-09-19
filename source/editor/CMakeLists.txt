@@ -23,7 +23,7 @@ set(POST_BUILD_COMMANDS
         COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_CURRENT_SOURCE_DIR}/resource" "${BINARY_ROOT_DIR}/resource"
         COMMAND ${CMAKE_COMMAND} -E copy_directory "$<TARGET_FILE_DIR:${TARGET_NAME}>/" "${BINARY_ROOT_DIR}"
         COMMAND ${CMAKE_COMMAND} -E remove_directory "${BINARY_ROOT_DIR}/${LAB_ASSET_DIR}"
-        COMMAND ${CMAKE_COMMAND} -E copy_directory "${LAB_ROOT_DIR}/${LAB_ASSET_DIR}" "${BINARY_ROOT_DIR}/${ENGINE_ASSET_DIR}"
+        COMMAND ${CMAKE_COMMAND} -E copy_directory "${LAB_ROOT_DIR}/${LAB_ASSET_DIR}" "${BINARY_ROOT_DIR}/${LAB_ASSET_DIR}"
         )
 
 add_custom_command(TARGET ${TARGET_NAME} ${POST_BUILD_COMMANDS})
