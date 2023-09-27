@@ -1,9 +1,11 @@
 set(TARGET_NAME GraphLabEditor)
 
 file(GLOB src_files
-        "${CMAKE_CURRENT_SOURCE_DIR}/source/*.cpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/component/*.h"
+        "${CMAKE_CURRENT_SOURCE_DIR}/component/*.cpp"
         "${CMAKE_CURRENT_SOURCE_DIR}/include/*.h"
-        "${CMAKE_CURRENT_SOURCE_DIR}/resource/GraphLabEditor.rc")
+        "${CMAKE_CURRENT_SOURCE_DIR}/resource/GraphLabEditor.rc"
+        main.cpp)
 
 add_executable(${TARGET_NAME} ${src_files})
 
@@ -14,9 +16,15 @@ target_include_directories(
         PUBLIC $<BUILD_INTERFACE:${THIRD_PARTY_DIR}/stb>
 )
 
-set_target_properties(${TARGET_NAME} PROPERTIES CXX_STANDARD 17 OUTPUT_NAME "GraphLabEditor")
+# Link dependencies
+target_link_libraries(${TARGET_NAME} PUBLIC assimp)
+target_link_libraries(${TARGET_NAME} PUBLIC stb)
+target_link_libraries(${TARGET_NAME} PUBLIC glfw)
+target_link_libraries(${TARGET_NAME} PUBLIC imgui)
+target_link_libraries(${TARGET_NAME} PUBLIC glm)
+target_link_libraries(${TARGET_NAME} PUBLIC glad)
 
-target_link_libraries(${TARGET_NAME} GraphLabRuntime)
+set_target_properties(${TARGET_NAME} PROPERTIES CXX_STANDARD 17 OUTPUT_NAME "GraphLabEditor")
 
 set(POST_BUILD_COMMANDS
         COMMAND ${CMAKE_COMMAND} -E make_directory "${BINARY_ROOT_DIR}"

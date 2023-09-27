@@ -19,8 +19,5 @@ set(BINARY_ROOT_DIR "${CMAKE_INSTALL_PREFIX}/")
 
 add_subdirectory(3rdparty)
 
-add_subdirectory(source/editor)
-add_subdirectory(source/runtime)
-
-add_dependencies(GraphLabEditor GraphLabRuntime)
+add_subdirectory(source)
 
